@@ -1,0 +1,11 @@
+# Library untuk membuat Telegram Bot
+python-telegram-bot==21.7
+
+# Library untuk HTTP requests (cek headers, SSL)
+requests==2.31.0
+
+# Library untuk parsing URL
+urllib3==2.1.0
+
+# Library untuk load .env file
+python-dotenv==1.0.0
