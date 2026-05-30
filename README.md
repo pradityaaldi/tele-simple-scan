@@ -1,57 +1,57 @@
-# Simple Vulnerability Scanner - Telegram Bot
+# Simple Vulnerability Scanner — Telegram Bot
 
-Bot Telegram sederhana untuk melakukan scanning keamanan dasar pada website.
+A lightweight Telegram bot that performs basic security scans against any website, directly from a chat. Built with an object-oriented scanner core and the `python-telegram-bot` library.
 
-## Fitur
+## Features
 
-- **Security Headers Scan** - Mengecek HTTP security headers
-- **SSL Certificate Scan** - Mengecek validitas sertifikat SSL/TLS
-- **Port Scan** - Mengecek port umum yang terbuka
+- **Security Headers Scan** — inspects HTTP security headers (CSP, HSTS, X-Frame-Options, etc.)
+- **SSL Certificate Scan** — validates the SSL/TLS certificate and its expiry
+- **Port Scan** — checks for commonly open ports
 
-## Cara Membuat Bot Telegram
+## Creating a Telegram Bot
 
-1. Buka Telegram dan cari **@BotFather**
-2. Kirim command `/newbot`
-3. Ikuti instruksi untuk memberi nama bot
-4. Setelah selesai, BotFather akan memberikan **Bot Token**
-5. Simpan token tersebut (jangan share ke siapapun!)
+1. Open Telegram and search for **@BotFather**
+2. Send the `/newbot` command
+3. Follow the prompts to name your bot
+4. BotFather returns a **Bot Token**
+5. Store the token securely (never share it)
 
-## Instalasi
+## Installation
 
 ```bash
-# 1. Clone atau masuk ke folder project
+# 1. Clone or enter the project folder
 cd tele-simple-scan
 
-# 2. Buat virtual environment (opsional tapi recommended)
+# 2. Create a virtual environment (optional but recommended)
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# atau
-venv\Scripts\activate  # Windows
+source venv/bin/activate   # Linux/Mac
+# or
+venv\Scripts\activate      # Windows
 
 # 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Set environment variable untuk bot token
-export TELEGRAM_BOT_TOKEN='token_dari_botfather'  # Linux/Mac
-# atau
-set TELEGRAM_BOT_TOKEN=token_dari_botfather  # Windows
+# 4. Set the bot token environment variable
+export TELEGRAM_BOT_TOKEN='token_from_botfather'   # Linux/Mac
+# or
+set TELEGRAM_BOT_TOKEN=token_from_botfather         # Windows
 
-# 5. Jalankan bot
+# 5. Run the bot
 python bot.py
 ```
 
-## Commands Bot
+## Bot Commands
 
-| Command | Deskripsi |
-|---------|-----------|
-| `/start` | Memulai bot dan menampilkan bantuan |
-| `/scan <url>` | Full scan (headers + SSL + ports) |
-| `/headers <url>` | Scan security headers saja |
-| `/ssl <url>` | Scan sertifikat SSL saja |
-| `/ports <url>` | Scan port terbuka saja |
-| `/help` | Menampilkan bantuan |
+| Command          | Description                       |
+| ---------------- | -------------------------------- |
+| `/start`         | Start the bot and show help      |
+| `/scan <url>`    | Full scan (headers + SSL + ports) |
+| `/headers <url>` | Scan security headers only       |
+| `/ssl <url>`     | Scan the SSL certificate only    |
+| `/ports <url>`   | Scan for open ports only         |
+| `/help`          | Show help                        |
 
-## Contoh Penggunaan
+## Usage Examples
 
 ```
 /scan google.com
@@ -60,30 +60,32 @@ python bot.py
 /ports 192.168.1.1
 ```
 
-## Struktur Project
+## Project Structure
 
 ```
 tele-simple-scan/
-├── bot.py              # Bot Telegram utama
-├── scanner.py          # Modul scanner (OOP)
-├── requirements.txt    # Dependencies Python
-├── .env.example        # Contoh environment variable
-└── README.md           # Dokumentasi
+├── bot.py              # Main Telegram bot
+├── scanner.py          # Scanner modules (OOP)
+├── requirements.txt    # Python dependencies
+├── .env.example        # Example environment variables
+└── README.md           # Documentation
 ```
 
-## Penjelasan Kode (untuk Tugas Kuliah)
+## Code Overview
 
 ### scanner.py
-- `SecurityHeaderScanner` - Class untuk mengecek HTTP security headers
-- `SSLScanner` - Class untuk mengecek sertifikat SSL
-- `PortScanner` - Class untuk scan port
-- `VulnerabilityScanner` - Facade class yang menggabungkan semua scanner
+
+- `SecurityHeaderScanner` — checks HTTP security headers
+- `SSLScanner` — validates the SSL certificate
+- `PortScanner` — scans for open ports
+- `VulnerabilityScanner` — facade that combines all scanners
 
 ### bot.py
-- `TelegramScannerBot` - Class utama yang menangani interaksi Telegram
-- Menggunakan library `python-telegram-bot` untuk komunikasi dengan Telegram API
-- Setiap command (`/scan`, `/headers`, dll) memiliki handler masing-masing
+
+- `TelegramScannerBot` — main class handling Telegram interaction
+- Uses the `python-telegram-bot` library to talk to the Telegram API
+- Each command (`/scan`, `/headers`, …) has its own dedicated handler
 
 ## Disclaimer
 
-Bot ini dibuat untuk tujuan edukasi. Hanya gunakan untuk scanning website yang kamu miliki atau memiliki izin untuk di-scan.
+This bot is built for educational purposes. Only scan websites you own or have explicit permission to test.
